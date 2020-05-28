@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th=http://www.thymeleaf.org>
+<head>
+	<meta charset="utf-8"/>
+	<title>Registrar Contribuyente</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
+	<style>
+		input,select{
+			margin-bottom:5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron">
+	       <h1>Registrar contribuyente</h1>
+	       <form th:action="@{/registrar}" th:object="${contribuyente}" method="post">
+				<input type="hidden"  th:field="*{ccontribuyente}" >
+				<div class="row">
+					<div class="col-sm-4">
+			    		<label>Nombre:</label>
+			    	</div>
+			    	<div class="col-sm-4">
+				    	<input type="text" th:field="*{snombre}" placeholder="" class="form-control"/> 
+				    </div>
+				    <div class="col-sm-4">
+				    	<span th:errors="*{snombre}" style="color: #E81505"></span>
+				    </div>
+			    </div>
+				<div class="row">
+					<div class="col-sm-4">
+			    		<label>Apellido:</label>
+			    	</div>
+					<div class="col-sm-4">
+			    		<input type="text" th:field="*{sapellido}" placeholder=" " class="form-control">
+			    	</div>
+					<div class="col-sm-4">
+			    		<span th:errors="*{sapellido}" style="color: #E81505"></span>
+					</div>
+			    </div>
+				<div class="row">
+					<div class="col-sm-4">
+			    		<label>NIT:</label>
+		    		</div>
+					<div class="col-sm-4">
+			    		<input type="number" th:field="*{snit}" placeholder=" " class="form-control"> 
+		    		</div>
+					<div class="col-sm-4">
+			    		<span th:errors="*{snit}" style="color: #E81505"></span>
+					</div>
+			    </div>
+				<div class="row">
+					<div class="col-sm-4">
+						<label>Importancia:</label> 
+					</div>
+					<div class="col-sm-4">
+						<select class="form-control" th:field="*{importancia.cimportancia}">
+							<option th:each="importancia : ${importancias}"
+								th:value="${importancia.cimportancia}"
+								th:text="${importancia.simportancia}">
+							</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-4">
+						<a th:href="@{/vercontribuyente}" class="btn btn-default btn-lg">Ver Contribuyente</a>
+					</div>
+					<div class="col-sm-4">
+						<input class="btn btn-success btn-lg" type="submit"  value="Guardar"/>
+					</div>
+				</div>
+			    
+			</form> 
+	    </div>
+	</div>
+</body>
+</html>

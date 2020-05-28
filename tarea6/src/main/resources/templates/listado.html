@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th=http://www.thymeleaf.org>
+<head>
+	<meta charset="utf-8"/>
+	<title>Lista Contribuyentes</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron">
+			<h1>Listado de Contribuyentes.</h1>
+			<table class="table table-condensed">
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Apellido</th>
+						<th>NIT</th>
+						<th>Importancia</th>
+						<th>Fecha Ingreso</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="contribuyente, row:${contribuyentes}">
+						<td th:text="${contribuyente.snombre}">Nombre</td>
+						<td th:text="${contribuyente.sapellido}">Apellido</td>
+						<td th:text="${contribuyente.snit}">Carnet</td>
+						<td th:text="${contribuyente.importancia.simportancia}">Importancia</td>
+						<td th:text="${contribuyente.sfechaDelegate}">Fecha Ingreso</td>
+					</tr>
+				</tbody>
+			</table>
+			<br>
+			<div class="row">
+				<a th:href="@{/}" class="btn btn-default btn-lg">
+					Regresar
+				</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
